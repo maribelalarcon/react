@@ -20,9 +20,9 @@ const ItemCount = ({ initial, stock, onAdd }) => {
 
     return (
         <div className="card" style={{ width: "18rem" }}>
-            <div class="card-body">
-                <h5 class="card-title">Compras</h5>
-                <p class="card-text"> Agregar al Carrito</p>
+            <div className="card-body">
+                <h5 className="card-title">Compras</h5>
+                <p className="card-text"> Agregar al Carrito</p>
 
                 <button className="btn btn-primary btn-lg" onClick={handlerAdd}>+</button>
                 <label>{count}</label>
