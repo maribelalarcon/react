@@ -2,7 +2,8 @@ import Navbar from './Components/NavBar/NavBar';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemListContainer from './Components/NavBar/ItemListContainer';
-import ItemCount from './Components/ItemCount/ItemCount'
+import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer';
+import ItemCount from './Components/ItemCount/ItemCount';
 
 function App() {
   const onAdd =(count)=>{
@@ -15,9 +16,9 @@ function App() {
       <Navbar/>
       <h1>Ropa Deportiva</h1>
       <ItemListContainer greetings="Para entrenar, tenes que sentirte comoda. Elegi lo mejor" />
-      <ItemCount initial={1} stock={5} onAdd={onAdd} />
-
-      
+      <ItemDetailContainer />
+      <br/>
+      <ItemCount initial={1} stock={5} onAdd={onAdd} /> 
     </div>
   );
 }
