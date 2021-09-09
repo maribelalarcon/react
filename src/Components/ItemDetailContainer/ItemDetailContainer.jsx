@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import { getProductos } from '../../utils/promesas'
+import { getProducto } from '../../utils/promesas'
 import ItemDetail from '../ItemDetailContainer/ItemDetail';
+import { useParams } from 'react-router-dom';
 
 export default function ItemDetailContainer() {
     const [producto, setProducto] = useState({})
     const [loading, setLoading] = useState(true)
+    const { id } = useParams();
 
     useEffect(() => {
-        getProductos
-            .then(respuestaProductos => {
-                setProducto(respuestaProductos[0]);
+        getProducto(id)
+            .then(respuestaProducto => {
+                setProducto(respuestaProducto);
                 setLoading(false);
             })
     }, [])

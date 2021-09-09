@@ -1,24 +1,42 @@
 import Navbar from './Components/NavBar/NavBar';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ItemListContainer from './Components/NavBar/ItemListContainer';
+import ItemListContainer from './Components/ItemList/ItemListContainer';
 import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer';
-import ItemCount from './Components/ItemCount/ItemCount';
+// import ItemCount from './Components/ItemCount/ItemCount';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 function App() {
-  const onAdd =(count)=>{
-    console.log(`la cantidad es : ${count}`)
-    alert(`la cantidad es : ${count}`)   
-  }
+
+  // const onAdd = (count) => {
+  //   console.log(`la cantidad es : ${count}`)
+  //   alert(`la cantidad es : ${count}`)   
+  // }
 
   return (
     <div className="App">
-      <Navbar/>
-      <h1>Ropa Deportiva</h1>
-      <ItemListContainer greetings="Para entrenar, tenes que sentirte comoda. Elegi lo mejor" />
-      <ItemDetailContainer />
-      <br/>
-      <ItemCount initial={1} stock={5} onAdd={onAdd} /> 
+      <Router>
+
+        <Navbar/>
+        <h1>Ropa Deportiva</h1>
+
+        <Switch>
+            <Route exact path="/">
+              <ItemListContainer />
+            </Route>
+
+            <Route path="/category/:id">
+              <ItemListContainer />
+            </Route>
+            
+            <Route path="/item/:id">
+              <ItemDetailContainer />
+            </Route>
+        </Switch>
+      
+      </Router>
+      {/* <br/>
+              <ItemCount initial={1} stock={5} onAdd={onAdd} />  */}
     </div>
   );
 }
