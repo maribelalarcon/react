@@ -3,8 +3,9 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemListContainer from './Components/ItemList/ItemListContainer';
 import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer';
-// import ItemCount from './Components/ItemCount/ItemCount';
+import ItemCount from './Components/ItemCount/ItemCount';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Cart from './Components/Cart/cart'
 
 function App() {
 
@@ -32,11 +33,21 @@ function App() {
             <Route path="/item/:id">
               <ItemDetailContainer />
             </Route>
+
+            <Route exact path='/cart'>
+               <Cart />
+            </Route>
+
+
+        
+             
+      {/* <ItemCount initial={1} stock={5} onAdd={onAdd}/>  */}
+           
         </Switch>
       
       </Router>
-      {/* <br/>
-              <ItemCount initial={1} stock={5} onAdd={onAdd} />  */}
+    
+             
     </div>
   );
 }
