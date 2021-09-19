@@ -14,7 +14,7 @@ export default function ItemDetailContainer() {
                 setProducto(respuestaProducto);
                 setLoading(false);
             })
-    }, [])
+    }, [id])
 
     return (
         <div>

@@ -3,52 +3,44 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemListContainer from './Components/ItemList/ItemListContainer';
 import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer';
-import ItemCount from './Components/ItemCount/ItemCount';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Cart from './Components/Cart/cart'
+import { CartProvider } from './Context/CartContext';
 
 function App() {
 
-  // const onAdd = (count) => {
-  //   console.log(`la cantidad es : ${count}`)
-  //   alert(`la cantidad es : ${count}`)   
-  // }
-
   return (
-    <div className="App">
-      <Router>
+    <CartProvider>
 
-        <Navbar/>
-        <h1>Ropa Deportiva</h1>
+      <div className="App">
+        <Router>
 
-        <Switch>
-            <Route exact path="/">
-              <ItemListContainer />
-            </Route>
+          <Navbar/>
+          <h1>Ropa Deportiva</h1>
 
-            <Route path="/category/:id">
-              <ItemListContainer />
-            </Route>
+          <Switch>
+              <Route exact path="/">
+                <ItemListContainer />
+              </Route>
+
+              <Route path="/category/:id">
+                <ItemListContainer />
+              </Route>
+              
+              <Route path="/item/:id">
+                <ItemDetailContainer />
+              </Route>
+
+              <Route exact path='/cart'>
+                <Cart />
+              </Route>
             
-            <Route path="/item/:id">
-              <ItemDetailContainer />
-            </Route>
-
-            <Route exact path='/cart'>
-               <Cart />
-            </Route>
-
-
+          </Switch>
         
-             
-      {/* <ItemCount initial={1} stock={5} onAdd={onAdd}/>  */}
-           
-        </Switch>
+        </Router>
       
-      </Router>
-    
-             
-    </div>
+      </div>
+    </CartProvider>
   );
 }
 
