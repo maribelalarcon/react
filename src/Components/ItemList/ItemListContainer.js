@@ -17,6 +17,7 @@ function ItemListContainer(props) {
 
     return (
         <div>
+            <h1>Ropa deportiva</h1>
             {items ? <ItemList items={items} /> : "Cargando..."}
         </div>
     )

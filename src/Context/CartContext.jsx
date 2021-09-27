@@ -24,9 +24,26 @@ export const CartProvider = ({ defaultValue = [], children }) => {
         }
         
     }
+    //Elimina del carrito
+    const deleteItem = (item) => {
+        const eliminarProducto = items.filter((prod) => prod.item.id !== item.item.id);
+        setItems([...eliminarProducto]);
+    } ;
 
+    const itemCount = items.reduce((acum, valor) => acum + valor.quantity, 0);
+
+    const cartTotal = items.reduce((total, item) => {
+        return total + (item.item.price * item.quantity);
+    }, 0);
+    
     return (
-        <CartContext.Provider value={{ items, addItem }} >
+        <CartContext.Provider value={{ 
+            items, 
+            addItem,
+            deleteItem,
+            itemCount,
+            cartTotal,
+        }}>
             {children}
         </CartContext.Provider>
     )

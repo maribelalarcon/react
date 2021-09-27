@@ -16,7 +16,6 @@ function App() {
         <Router>
 
           <Navbar/>
-          <h1>Ropa Deportiva</h1>
 
           <Switch>
               <Route exact path="/">
