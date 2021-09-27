@@ -18,7 +18,7 @@ function ItemDetail({ producto }) {
                 <label>{producto.nombre}</label>
             </div>
             <div className= 'card-body'></div>
-            <img src={producto.URL} alt={producto.nombre} className= "w-40"/>
+            <img src={producto.url} alt={producto.nombre} className= "w-40"/>
             <br/>
             <label>{producto.descripcion}</label>
             <div className= 'card-footer'></div>
