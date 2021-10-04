@@ -30,6 +30,8 @@ export const CartProvider = ({ defaultValue = [], children }) => {
         setItems([...eliminarProducto]);
     } ;
 
+    const vaciar = () => setItems([]);
+
     const itemCount = items.reduce((acum, valor) => acum + valor.quantity, 0);
 
     const cartTotal = items.reduce((total, item) => {
@@ -41,6 +43,7 @@ export const CartProvider = ({ defaultValue = [], children }) => {
             items, 
             addItem,
             deleteItem,
+            vaciar,
             itemCount,
             cartTotal,
         }}>

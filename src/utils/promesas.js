@@ -1,4 +1,7 @@
 import { getFirestore } from '../service/firestore';
+import firebase from 'firebase/app'
+import 'firebase/firestore'
+
 
 const db = getFirestore();
 
@@ -30,3 +33,32 @@ export const getProducto = (idProducto) => new Promise((resuelto) => {
         })
     });
 });
+
+export const createOrder = (data) => {
+    const orders = db.collection("ordenes");
+
+    const itemIds = data.items.map(item => item.item.id);
+
+    const items = db.collection("productos").where(firebase.firestore.FieldPath.documentId(), 'in', itemIds)
+
+    const batch = db.batch();
+
+    items.get()
+        .then(collection => {
+
+            collection.docs.forEach(docSnapshot => {
+                const itemCarrito = data.items.find(item => item.item.id === docSnapshot.id);
+                batch.update(docSnapshot.ref, {
+                    stock: docSnapshot.data().stock - itemCarrito.quantity
+                })
+            })
+
+            batch.commit();
+        })
+
+
+    return orders.add({
+        ...data,
+        date: new Date()
+    });
+}

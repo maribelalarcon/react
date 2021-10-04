@@ -17,7 +17,7 @@ export default function ItemDetailContainer() {
     }, [id])
 
     return (
-        <div>
+        <div className="p-5">
             {loading ? <h2> Cargando Productos</h2> : <ItemDetail producto={producto} /> }
         </div>
     )
