@@ -1,0 +1,13 @@
+.ItemCount {
+    display: flex;
+    flex-direction: column;
+}
+
+.ItemCount__buttons {
+    align-self: center;
+    margin-bottom: 20px;
+}
+
+.ItemCount__buttons label {
+    padding: 0 20px;
+}
