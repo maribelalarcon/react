@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import ItemList from './ItemList';
 import { getProductos } from '../../utils/promesas';
 import { useParams } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
 import './ItemListContainer.css';
+
 
 function ItemListContainer(props) {
 
@@ -16,10 +18,10 @@ function ItemListContainer(props) {
     }, [id])
 
     return (
-        <div>
+        <Container>
             <h1>Ropa deportiva</h1>
             {items ? <ItemList items={items} /> : "Cargando..."}
-        </div>
+        </Container>
     )
 }
 export default ItemListContainer;
